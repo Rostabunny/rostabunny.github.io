@@ -1,6 +1,7 @@
-# rostabunny.github.io
-Pages!
-Such Wonderful things!
-If only they would update.
-Oh, How frustrating are.
-Pages!
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Hello World</h1>
+<p>I'm hosted with GitHub Pages.</p>
+</body>
+</html>
