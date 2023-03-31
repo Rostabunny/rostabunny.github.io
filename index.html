@@ -3,35 +3,60 @@
 <style>
 body {
   background-color: green;
+  text-align: center;
+  font-size: 2em;
 }
 </style>
 </head>
-<body onload="changeBackgroundColor()">
+<body onload="initCounter()">
 <h1>Hi There!</h1>
 <p>I'm hosted with GitHub Pages.</p>
 <p>This lets you set the background color.</p>
 <h1>But this text is bigger!</h1>
 <p>And this one is even a button!</p>
-<button onclick="changeBackgroundColor()">hi!</button>
+<button onclick="incrementCounter()">hi!</button>
+<div id="counter"></div>
 
 <script>
-function changeBackgroundColor() {
-  var body = document.querySelector("body");
-  var currentColor = body.style.backgroundColor;
-  switch (currentColor) {
-    case "green":
-      body.style.backgroundColor = "darkblue";
-      break;
-    case "darkblue":
-      body.style.backgroundColor = "lightblue";
-      break;
-    case "lightblue":
-      body.style.backgroundColor = "green";
-      break;
-    default:
-      body.style.backgroundColor = "green";
-      break;
+function initCounter() {
+  // Check if the user has a cookie for the counter
+  var clicks = getCookie("clicks");
+  if (clicks) {
+    document.getElementById("counter").innerHTML = "Clicks: " + clicks;
+  } else {
+    document.getElementById("counter").innerHTML = "Clicks: 0";
   }
+}
+
+function incrementCounter() {
+  // Get the current number of clicks from the cookie
+  var clicks = parseInt(getCookie("clicks")) || 0;
+  clicks++;
+  // Set the new number of clicks in the cookie
+  setCookie("clicks", clicks, 365);
+  document.getElementById("counter").innerHTML = "Clicks: " + clicks;
+}
+
+// Utility functions for setting and getting cookies
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
 }
 </script>
 </body>
