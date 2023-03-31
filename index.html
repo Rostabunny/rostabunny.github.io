@@ -1,19 +1,38 @@
-
-<!DOCTYPE html>
-<html>
+html>
 <head>
 <style>
 body {
-background-color: green}
-</head>
+  background-color: green;
+}
 </style>
+</head>
+<body>
 <h1>Hi There!</h1>
-<p>I'm hosted with GitHub Pages.
-<p>This lets you set the background color.
+<p>I'm hosted with GitHub Pages.</p>
+<p>This lets you set the background color.</p>
 <h1>But this text is bigger!</h1>
 <p>And this one is even a button!</p>
-<button> 
-hi!
-</button>
+<button onclick="changeBackgroundColor()">hi!</button>
+
+<script>
+function changeBackgroundColor() {
+  var body = document.querySelector("body");
+  var currentColor = body.style.backgroundColor;
+  switch (currentColor) {
+    case "green":
+      body.style.backgroundColor = "darkblue";
+      break;
+    case "darkblue":
+      body.style.backgroundColor = "lightblue";
+      break;
+    case "lightblue":
+      body.style.backgroundColor = "green";
+      break;
+    default:
+      body.style.backgroundColor = "green";
+      break;
+  }
+}
+</script>
 </body>
 </html>
