@@ -1,63 +1,24 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<style>
-body {
-  background-color: green;
-  text-align: center;
-  font-size: 2em;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Web Client</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body onload="initCounter()">
-<h1>Hi There!</h1>
-<p>I'm hosted with GitHub Pages.</p>
-<p>This simple button makes your counter go up.</p>
-<p>Try Pressing it!</p>
-<p>and reloading your page!</p>
-<button onclick="incrementCounter()">hi!</button>
-<div id="counter"></div>
+<body>
+  <div id="app">
+    <h1>Spotify Web Client</h1>
+    <div id="login">
+      <button onclick="authorizeSpotify()">Login with Spotify</button>
+    </div>
+    <div id="user-info" style="display: none;">
+      <h2>Welcome, <span id="user-name"></span>!</h2>
+      <button onclick="getPlaylists()">Show Playlists</button>
+      <div id="playlists"></div>
+    </div>
+  </div>
 
-<script>
-function initCounter() {
-  // Check if the user has a cookie for the counter
-  var clicks = getCookie("clicks");
-  if (clicks) {
-    document.getElementById("counter").innerHTML = "Clicks: " + clicks;
-  } else {
-    document.getElementById("counter").innerHTML = "Clicks: 0";
-  }
-}
-
-function incrementCounter() {
-  // Get the current number of clicks from the cookie
-  var clicks = parseInt(getCookie("clicks")) || 0;
-  clicks++;
-  // Set the new number of clicks in the cookie
-  setCookie("clicks", clicks, 365);
-  document.getElementById("counter").innerHTML = "Clicks: " + clicks;
-}
-
-// Utility functions for setting and getting cookies
-function setCookie(name, value, days) {
-  var expires = "";
-  if (days) {
-    var date = new Date();
-    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    expires = "; expires=" + date.toUTCString();
-  }
-  document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
-function getCookie(name) {
-  var nameEQ = name + "=";
-  var ca = document.cookie.split(';');
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-  }
-  return null;
-}
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
