@@ -1,6 +1,6 @@
 // script.js
-const CLIENT_ID = 'YOUR_CLIENT_ID';
-const REDIRECT_URI = 'YOUR_REDIRECT_URI';
+const CLIENT_ID = '340a545f59344f6f9daf9519af0e41b4';
+const REDIRECT_URI = 'http://localhost:8888/callback';
 const SCOPES = 'playlist-read-private';
 let accessToken;
 
