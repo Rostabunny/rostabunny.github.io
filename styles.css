@@ -1,0 +1,23 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+}
+
+#app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+#login, #user-info {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#playlists {
+  margin-top: 20px;
+}
